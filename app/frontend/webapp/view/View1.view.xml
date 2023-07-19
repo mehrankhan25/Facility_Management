@@ -1,0 +1,28 @@
+<mvc:View controllerName="FacilityManagementSystem.com.frontend.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+             <Table id="myTable" items="{/Users}">
+                <columns>
+                    <Column id="columnHeader1">
+                        <Text id="text1" text="ID" />
+                    </Column>
+                    <Column id="columnHeader2">
+                        <Text id="text2" text="Name" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="listItems">
+                        <cells>
+                            <Text id="text5" text="{ID}" />
+                            <Text id="text6" text="{name}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            
+        </content>
+    </Page>
+</mvc:View>

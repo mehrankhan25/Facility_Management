@@ -1,0 +1,27 @@
+GET http://localhost:4004/catalog/demo
+
+###
+
+POST http://localhost:4004/catalog/Users
+Content-Type: application/json
+
+{
+    "ID": 1,
+    "name": "mehran",
+    "email": "mehran@gmail.com",
+    "contact": "1234567890",
+    "gender" : 2,
+    "dob": "1998-01-01",
+    "cnic" : "1234567890123",
+    "resident_type_ID": 1
+}
+###
+
+POST http://localhost:4004/catalog/login
+Content-Type: application/json
+
+{
+    "email": "test1@gmail.com",
+    "password": "test1"
+}
+
