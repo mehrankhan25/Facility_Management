@@ -10,7 +10,7 @@ sap.ui.define([
         return Controller.extend("FacilityManagementSystem.com.frontend.controller.View1", {
             onInit: function () {
                 jQuery.ajax({
-                    url: "/catalog/Users",
+                    url: "/catalog/MANAGEMENT_Users",
                     method: "GET",
                     success: function(data) {
                       // Handle the successful response

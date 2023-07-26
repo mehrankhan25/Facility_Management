@@ -1,15 +1,45 @@
-using app from '../db/demo';
+using MANAGEMENT as my from '../db/demo';
+using MANAGEMENT_USERS from '../db/demo';
+
+service CatalogService @(requires: 'authenticated-user') {
+
+  entity Users @(restrict: [
+    { grant: ['*'], to: 'Admin' },
+    { grant: 'READ', to: 'View' },
+    {grant: 'CREATE', to: 'Add'}
+  ]) as projection on my.User;
 
 
-service CatalogService {
+  entity MANAGEMENT_Users @(restrict: [
+    { grant: ['*'], to: 'Admin' },
+    { grant: 'READ', to: 'View' },
+    {grant: 'CREATE', to: 'Add'}
+  ]) as projection on MANAGEMENT_USERS;
 
- entity Users as projection on app.User;
- entity building  as projection on app.building ;
- entity building_type  as projection on app.building_type ;
- entity building_floor  as projection on app.building_floor ;
- entity resident_type  as projection on app.resident_type ;
+ 
+  entity building @(restrict: [
+    { grant: ['*'], to: 'Admin' },
+    { grant: 'READ', to: 'View' },
+    {grand: 'CREATE', to: 'Add'}
+  ]) as projection on my.building;
 
-// @requires: 'Admin'
-// @restrict: [{ grant: 'READ', where: 'name = ''test4'''}]
+ entity building_type @(restrict: [
+    { grant: ['*'], to: 'Admin' },
+    { grant: 'READ', to: 'View' },
+    {grand: 'CREATE', to: 'Add'}
+  ])  as projection on my.building_type ;
+
+ entity building_floor @(restrict: [
+    { grant: ['*'], to: 'Admin' },
+    { grant: 'READ', to: 'View' },
+    {grand: 'CREATE', to: 'Add'}
+  ]) as projection on my.building_floor ;
+
+ entity resident_type @(restrict: [
+    { grant: ['*'], to: 'Admin' },
+    { grant: 'READ', to: 'View' },
+    {grand: 'CREATE', to: 'Add'}
+  ]) as projection on my.resident_type ;
+
  
 }

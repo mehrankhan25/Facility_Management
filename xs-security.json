@@ -1,5 +1,56 @@
 {
-  "scopes": [],
+  "xsappname": "managementapp",
+"tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Admin",
+      "description": "Admin"
+    },
+    {
+      "name": "$XSAPPNAME.View",
+      "description": "View"
+    },
+    {
+      "name": "$XSAPPNAME.Add",
+      "description": "Add"
+    }
+  ],
   "attributes": [],
-  "role-templates": []
+  "role-templates": [
+    {
+      "name": "Admin",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.Admin"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "View",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.View"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "Add",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.Add"
+      ],
+      "attribute-references": []
+    }
+  ],
+  "oauth2-configuration": {
+      "credential-types": [
+          "binding-secret",
+          "x509"
+      ],
+      "redirect-uris": [
+        "https://*.applicationstudio.cloud.sap/**",
+        "https://*.cfapps.us10-001.hana.ondemand.com/login/callback"
+       
+      ]
+  }
 }

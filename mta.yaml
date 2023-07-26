@@ -8,6 +8,7 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
+        - npm install --production
         - npx -p @sap/cds-dk cds build --production
 modules:
   - name: Facility_Management-srv
@@ -22,8 +23,8 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: Facility_Management-db
-      - name: Facility_Management-auth
+      - name: Facility_Management-dev
+      - name: Management-auth
 
   - name: Facility_Management-db-deployer
     type: hdb
@@ -31,7 +32,7 @@ modules:
     parameters:
       buildpack: nodejs_buildpack
     requires:
-      - name: Facility_Management-db
+      - name: Facility_Management-dev
 
   - name: Facility_Management
     type: approuter.nodejs
@@ -47,20 +48,20 @@ modules:
           name: srv-api # must be used in xs-app.json as well
           url: ~{srv-url}
           forwardAuthToken: true
-      - name: Facility_Management-auth
+      - name: Management-auth
 
 resources:
-  - name: Facility_Management-db
+  - name: Facility_Management-dev
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
       service-plan: hdi-shared
-  - name: Facility_Management-auth
+  - name: Management-auth
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
       service-plan: application
       path: ./xs-security.json
       config:
-        xsappname: Facility_Management-${org}-${space}
+        xsappname: managementapp
         tenant-mode: dedicated

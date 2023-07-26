@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="MANAGEMENT_USERS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="MANAGEMENT_USERS.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="MANAGEMENT_USER">
+    <resourceUri>MANAGEMENT_USER</resourceUri>
+  </DataSource>
+  <DataSource id="MANAGEMENT_RESIDENT_TYPE">
+    <resourceUri>MANAGEMENT_RESIDENT_TYPE</resourceUri>
+  </DataSource>
+  <DataSource id="MANAGEMENT_BUILDING">
+    <resourceUri>MANAGEMENT_BUILDING</resourceUri>
+  </DataSource>
+  <DataSource id="MANAGEMENT_BUILDING_TYPE">
+    <resourceUri>MANAGEMENT_BUILDING_TYPE</resourceUri>
+  </DataSource>
+  <DataSource id="MANAGEMENT_BUILDING_FLOOR">
+    <resourceUri>MANAGEMENT_BUILDING_FLOOR</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="User">
+    <viewAttributes>
+      <viewAttribute id="CREATEDAT"/>
+      <viewAttribute id="CREATEDBY"/>
+      <viewAttribute id="MODIFIEDAT"/>
+      <viewAttribute id="MODIFIEDBY"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMAIL"/>
+      <viewAttribute id="CONTACT"/>
+      <viewAttribute id="GENDER"/>
+      <viewAttribute id="DOB"/>
+      <viewAttribute id="CNIC"/>
+      <viewAttribute id="RESIDENT_TYPE_ID"/>
+      <viewAttribute id="BUILDING_ID"/>
+      <viewAttribute id="BUILDING_TYPE_ID"/>
+      <viewAttribute id="BUILDING_FLOOR_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MANAGEMENT_USER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Resdient-type">
+    <viewAttributes>
+      <viewAttribute id="CREATEDAT"/>
+      <viewAttribute id="CREATEDBY"/>
+      <viewAttribute id="MODIFIEDAT"/>
+      <viewAttribute id="MODIFIEDBY"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="RESIDENT_TYPE_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MANAGEMENT_RESIDENT_TYPE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Building">
+    <viewAttributes>
+      <viewAttribute id="CREATEDAT"/>
+      <viewAttribute id="CREATEDBY"/>
+      <viewAttribute id="MODIFIEDAT"/>
+      <viewAttribute id="MODIFIEDBY"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="ADDRESS_STREET"/>
+      <viewAttribute id="ADDRESS_CITY"/>
+      <viewAttribute id="ADDRESS_STATE"/>
+      <viewAttribute id="ADDRESS_ZIP"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MANAGEMENT_BUILDING"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Building-type">
+    <viewAttributes>
+      <viewAttribute id="CREATEDAT"/>
+      <viewAttribute id="CREATEDBY"/>
+      <viewAttribute id="MODIFIEDAT"/>
+      <viewAttribute id="MODIFIEDBY"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="BUILDING_TYPE_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MANAGEMENT_BUILDING_TYPE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Building-floor">
+    <viewAttributes>
+      <viewAttribute id="CREATEDAT"/>
+      <viewAttribute id="CREATEDBY"/>
+      <viewAttribute id="MODIFIEDAT"/>
+      <viewAttribute id="MODIFIEDBY"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="FLOOR_NO"/>
+      <viewAttribute id="AREA"/>
+      <viewAttribute id="FLAT_NO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MANAGEMENT_BUILDING_FLOOR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CREATEDAT"/>
+      <viewAttribute id="CREATEDBY"/>
+      <viewAttribute id="MODIFIEDAT"/>
+      <viewAttribute id="MODIFIEDBY"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMAIL"/>
+      <viewAttribute id="CONTACT"/>
+      <viewAttribute id="GENDER"/>
+      <viewAttribute id="DOB"/>
+      <viewAttribute id="CNIC"/>
+      <viewAttribute id="BUILDING_ID"/>
+      <viewAttribute id="BUILDING_TYPE_ID"/>
+      <viewAttribute id="BUILDING_FLOOR_ID"/>
+      <viewAttribute id="RESIDENT_TYPE_NAME"/>
+      <viewAttribute hidden="true" id="JOIN$RESIDENT_TYPE_ID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="User">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATEDAT" source="CREATEDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATEDBY" source="CREATEDBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIEDAT" source="MODIFIEDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIEDBY" source="MODIFIEDBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAIL" source="EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT" source="CONTACT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GENDER" source="GENDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOB" source="DOB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNIC" source="CNIC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_ID" source="BUILDING_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_TYPE_ID" source="BUILDING_TYPE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_FLOOR_ID" source="BUILDING_FLOOR_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$RESIDENT_TYPE_ID$ID" source="RESIDENT_TYPE_ID"/>
+    </input>
+    <input node="Resdient-type">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESIDENT_TYPE_NAME" source="RESIDENT_TYPE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$RESIDENT_TYPE_ID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$RESIDENT_TYPE_ID$ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CREATEDAT"/>
+      <viewAttribute id="CREATEDBY"/>
+      <viewAttribute id="MODIFIEDAT"/>
+      <viewAttribute id="MODIFIEDBY"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMAIL"/>
+      <viewAttribute id="CONTACT"/>
+      <viewAttribute id="GENDER"/>
+      <viewAttribute id="DOB"/>
+      <viewAttribute id="CNIC"/>
+      <viewAttribute id="BUILDING_TYPE_ID"/>
+      <viewAttribute id="BUILDING_FLOOR_ID"/>
+      <viewAttribute id="RESIDENT_TYPE_NAME"/>
+      <viewAttribute id="NAME_1"/>
+      <viewAttribute id="ADDRESS_STREET"/>
+      <viewAttribute id="ADDRESS_CITY"/>
+      <viewAttribute id="ADDRESS_STATE"/>
+      <viewAttribute id="ADDRESS_ZIP"/>
+      <viewAttribute hidden="true" id="JOIN$BUILDING_ID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATEDAT" source="CREATEDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATEDBY" source="CREATEDBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIEDAT" source="MODIFIEDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIEDBY" source="MODIFIEDBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAIL" source="EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT" source="CONTACT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GENDER" source="GENDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOB" source="DOB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNIC" source="CNIC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_TYPE_ID" source="BUILDING_TYPE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_FLOOR_ID" source="BUILDING_FLOOR_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESIDENT_TYPE_NAME" source="RESIDENT_TYPE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BUILDING_ID$ID" source="BUILDING_ID"/>
+    </input>
+    <input node="Building">
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_1" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_STREET" source="ADDRESS_STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_CITY" source="ADDRESS_CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_STATE" source="ADDRESS_STATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_ZIP" source="ADDRESS_ZIP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BUILDING_ID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$BUILDING_ID$ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CREATEDAT"/>
+      <viewAttribute id="CREATEDBY"/>
+      <viewAttribute id="MODIFIEDAT"/>
+      <viewAttribute id="MODIFIEDBY"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMAIL"/>
+      <viewAttribute id="CONTACT"/>
+      <viewAttribute id="GENDER"/>
+      <viewAttribute id="DOB"/>
+      <viewAttribute id="CNIC"/>
+      <viewAttribute id="BUILDING_TYPE_ID"/>
+      <viewAttribute id="BUILDING_FLOOR_ID"/>
+      <viewAttribute id="RESIDENT_TYPE_NAME"/>
+      <viewAttribute id="NAME_1"/>
+      <viewAttribute id="ADDRESS_STREET"/>
+      <viewAttribute id="ADDRESS_CITY"/>
+      <viewAttribute id="ADDRESS_STATE"/>
+      <viewAttribute id="ADDRESS_ZIP"/>
+      <viewAttribute id="BUILDING_TYPE_NAME"/>
+      <viewAttribute hidden="true" id="JOIN$BUILDING_TYPE_ID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATEDAT" source="CREATEDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATEDBY" source="CREATEDBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIEDAT" source="MODIFIEDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIEDBY" source="MODIFIEDBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAIL" source="EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT" source="CONTACT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GENDER" source="GENDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOB" source="DOB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNIC" source="CNIC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_TYPE_ID" source="BUILDING_TYPE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_FLOOR_ID" source="BUILDING_FLOOR_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESIDENT_TYPE_NAME" source="RESIDENT_TYPE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_1" source="NAME_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_STREET" source="ADDRESS_STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_CITY" source="ADDRESS_CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_STATE" source="ADDRESS_STATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_ZIP" source="ADDRESS_ZIP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BUILDING_TYPE_ID$ID" source="BUILDING_TYPE_ID"/>
+    </input>
+    <input node="Building-type">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_TYPE_NAME" source="BUILDING_TYPE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BUILDING_TYPE_ID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$BUILDING_TYPE_ID$ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CREATEDAT"/>
+      <viewAttribute id="CREATEDBY"/>
+      <viewAttribute id="MODIFIEDAT"/>
+      <viewAttribute id="MODIFIEDBY"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMAIL"/>
+      <viewAttribute id="CONTACT"/>
+      <viewAttribute id="GENDER"/>
+      <viewAttribute id="DOB"/>
+      <viewAttribute id="CNIC"/>
+      <viewAttribute id="BUILDING_TYPE_ID"/>
+      <viewAttribute id="BUILDING_FLOOR_ID"/>
+      <viewAttribute id="RESIDENT_TYPE_NAME"/>
+      <viewAttribute id="NAME_1"/>
+      <viewAttribute id="ADDRESS_STREET"/>
+      <viewAttribute id="ADDRESS_CITY"/>
+      <viewAttribute id="ADDRESS_STATE"/>
+      <viewAttribute id="ADDRESS_ZIP"/>
+      <viewAttribute id="BUILDING_TYPE_NAME"/>
+      <viewAttribute id="FLOOR_NO"/>
+      <viewAttribute id="AREA"/>
+      <viewAttribute id="FLAT_NO"/>
+      <viewAttribute hidden="true" id="JOIN$BUILDING_FLOOR_ID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATEDAT" source="CREATEDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATEDBY" source="CREATEDBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIEDAT" source="MODIFIEDAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MODIFIEDBY" source="MODIFIEDBY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAIL" source="EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTACT" source="CONTACT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GENDER" source="GENDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOB" source="DOB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNIC" source="CNIC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_TYPE_ID" source="BUILDING_TYPE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_FLOOR_ID" source="BUILDING_FLOOR_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESIDENT_TYPE_NAME" source="RESIDENT_TYPE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_1" source="NAME_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_STREET" source="ADDRESS_STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_CITY" source="ADDRESS_CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_STATE" source="ADDRESS_STATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_ZIP" source="ADDRESS_ZIP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUILDING_TYPE_NAME" source="BUILDING_TYPE_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BUILDING_FLOOR_ID$ID" source="BUILDING_FLOOR_ID"/>
+    </input>
+    <input node="Building-floor">
+      <mapping xsi:type="Calculation:AttributeMapping" target="FLOOR_NO" source="FLOOR_NO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AREA" source="AREA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FLAT_NO" source="FLAT_NO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BUILDING_FLOOR_ID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$BUILDING_FLOOR_ID$ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_4">
+  <attributes>
+    <attribute id="CREATEDAT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATEDAT"/>
+      <keyMapping columnObjectName="Join_4" columnName="CREATEDAT"/>
+    </attribute>
+    <attribute id="CREATEDBY" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATEDBY"/>
+      <keyMapping columnObjectName="Join_4" columnName="CREATEDBY"/>
+    </attribute>
+    <attribute id="MODIFIEDAT" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MODIFIEDAT"/>
+      <keyMapping columnObjectName="Join_4" columnName="MODIFIEDAT"/>
+    </attribute>
+    <attribute id="MODIFIEDBY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MODIFIEDBY"/>
+      <keyMapping columnObjectName="Join_4" columnName="MODIFIEDBY"/>
+    </attribute>
+    <attribute id="ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Join_4" columnName="ID"/>
+    </attribute>
+    <attribute id="NAME" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Join_4" columnName="NAME"/>
+    </attribute>
+    <attribute id="EMAIL" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAIL"/>
+      <keyMapping columnObjectName="Join_4" columnName="EMAIL"/>
+    </attribute>
+    <attribute id="CONTACT" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTACT"/>
+      <keyMapping columnObjectName="Join_4" columnName="CONTACT"/>
+    </attribute>
+    <attribute id="GENDER" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GENDER"/>
+      <keyMapping columnObjectName="Join_4" columnName="GENDER"/>
+    </attribute>
+    <attribute id="DOB" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DOB"/>
+      <keyMapping columnObjectName="Join_4" columnName="DOB"/>
+    </attribute>
+    <attribute id="CNIC" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CNIC"/>
+      <keyMapping columnObjectName="Join_4" columnName="CNIC"/>
+    </attribute>
+    <attribute id="BUILDING_TYPE_ID" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUILDING_TYPE_ID"/>
+      <keyMapping columnObjectName="Join_4" columnName="BUILDING_TYPE_ID"/>
+    </attribute>
+    <attribute id="BUILDING_FLOOR_ID" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUILDING_FLOOR_ID"/>
+      <keyMapping columnObjectName="Join_4" columnName="BUILDING_FLOOR_ID"/>
+    </attribute>
+    <attribute id="RESIDENT_TYPE_NAME" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RESIDENT_TYPE_NAME"/>
+      <keyMapping columnObjectName="Join_4" columnName="RESIDENT_TYPE_NAME"/>
+    </attribute>
+    <attribute id="NAME_1" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Join_4" columnName="NAME_1"/>
+    </attribute>
+    <attribute id="ADDRESS_STREET" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRESS_STREET"/>
+      <keyMapping columnObjectName="Join_4" columnName="ADDRESS_STREET"/>
+    </attribute>
+    <attribute id="ADDRESS_CITY" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRESS_CITY"/>
+      <keyMapping columnObjectName="Join_4" columnName="ADDRESS_CITY"/>
+    </attribute>
+    <attribute id="ADDRESS_STATE" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRESS_STATE"/>
+      <keyMapping columnObjectName="Join_4" columnName="ADDRESS_STATE"/>
+    </attribute>
+    <attribute id="ADDRESS_ZIP" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRESS_ZIP"/>
+      <keyMapping columnObjectName="Join_4" columnName="ADDRESS_ZIP"/>
+    </attribute>
+    <attribute id="BUILDING_TYPE_NAME" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUILDING_TYPE_NAME"/>
+      <keyMapping columnObjectName="Join_4" columnName="BUILDING_TYPE_NAME"/>
+    </attribute>
+    <attribute id="FLOOR_NO" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FLOOR_NO"/>
+      <keyMapping columnObjectName="Join_4" columnName="FLOOR_NO"/>
+    </attribute>
+    <attribute id="AREA" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AREA"/>
+      <keyMapping columnObjectName="Join_4" columnName="AREA"/>
+    </attribute>
+    <attribute id="FLAT_NO" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FLAT_NO"/>
+      <keyMapping columnObjectName="Join_4" columnName="FLAT_NO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="User" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-309" y="711"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Resdient-type" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-133" y="711"/>
+      <rectangleSize height="30" width="220"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Building" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="103" y="711"/>
+      <rectangleSize height="30" width="192"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Building-type" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="318" y="711"/>
+      <rectangleSize height="30" width="248"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Building-floor" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="594" y="711"/>
+      <rectangleSize height="30" width="249"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-213" y="547"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="User" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="199"/>
+    </shape>
+    <shape modelObjectName="Resdient-type" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="214"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-11" y="425"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="214"/>
+    </shape>
+    <shape modelObjectName="Building" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="188"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="189" y="323"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="214"/>
+    </shape>
+    <shape modelObjectName="Building-type" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="210"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="362" y="195"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="214"/>
+    </shape>
+    <shape modelObjectName="Building-floor" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="154"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

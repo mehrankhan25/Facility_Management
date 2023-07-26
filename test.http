@@ -1,14 +1,14 @@
-GET http://localhost:4004/catalog/demo
+GET http://localhost:4004/catalog/Users
 
 ###
 
-POST http://localhost:4004/catalog/Users
+POST http://localhost:5000/catalog/Users
 Content-Type: application/json
 
 {
-    "ID": 1,
-    "name": "mehran",
-    "email": "mehran@gmail.com",
+    "ID": 3,
+    "name": "nayyar",
+    "email": "nayyar@gmail.com",
     "contact": "1234567890",
     "gender" : 2,
     "dob": "1998-01-01",
